@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BTC Price Maker</title>
+        <link rel="stylesheet" type="text/css" href="style_sheet.css" />
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous"> 
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+    </head>
+    
+    <body>
+    </div>
+    <section class="bg-dark text-center p-5 mt-41">
+        <div class="container p-3">
+            <h3 class="text-white">Convertidor de MXN a BTC</h3>
+                <input type="text" name="text" id="inp" placeholder="Ingresa la cantidad en MXN">
+                <button id="btn" type="submit" class="btn btn-default">BTC<i class="fa fa-envelope"></i></button>
+        </div>
+    </section>
+
+
+
+  
+    <div class="cover-container text-center d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <main role="main" class="inner cover">
+        <h2 class="cover-heading">Cantidad en BTC</h2>
+        <p class="lead"></p>
+        <p class="lead" id="amountBTC">
+          <a href="#" class="btn btn-lg btn-secondary">Aqui va el QR</a>
+        </p>
+      </main>
+
+              <!-- Include eel.js - note this file doesn't exist in the 'web' directory -->
+              <script type="text/javascript" src="/eel.js"></script>
+              <script type="text/javascript">
+      
+      
+              $(function(){
+                          eel.expose(display_info);               // Expose this function to Python
+                          function display_info(x) {
+                          console.log(x);
+                          document.getElementById("amountBTC").innerHTML = x ;
+                          }
+                          display_info("Valor en BTC");
+                          eel.handleinput(0);  // Call a Python function
+                          
+                          $("#btn").click(function(){
+                              eel.handleinput($("#inp").val());
+                              $('#inp').val('');
+                          });
+              }); 
+              </script>
+</div>
+    </body>
+</html>
